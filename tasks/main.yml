@@ -19,14 +19,14 @@
   apt: name={{ item }} state=present
   with_items:
    - elasticsearch
-   tags: elasticsearch
+  tags: elasticsearch
 
 - name: Configure elasticsearch
   template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
   notify: restart elasticsearch
-   tags: elasticsearch
+  tags: elasticsearch
 
 - name: Configure the java variables for elasticsearch
   template: src=elasticsearch.j2 dest=/etc/default/elasticsearch
   notify: restart elasticsearch
-   tags: elasticsearch
+  tags: elasticsearch
