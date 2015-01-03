@@ -1,0 +1,32 @@
+---
+
+- name: Install the Java packages
+  apt: name={{ item }} state=present
+  with_items:
+   - openjdk-7-jre
+   - openjdk-7-jre-headless
+  tags: elasticsearch
+
+- name: Add the package key
+  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch state=present
+  tags: elasticsearch
+
+- name: Add the apt repository
+  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/{{ elasticsearch.version }}/debian stable main' state=present
+  tags: elasticsearch
+
+- name: Install the elasticsearch package
+  apt: name={{ item }} state=present
+  with_items:
+   - elasticsearch
+   tags: elasticsearch
+
+- name: Configure elasticsearch
+  template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
+  notify: restart elasticsearch
+   tags: elasticsearch
+
+- name: Configure the java variables for elasticsearch
+  template: src=elasticsearch.j2 dest=/etc/default/elasticsearch
+  notify: restart elasticsearch
+   tags: elasticsearch
