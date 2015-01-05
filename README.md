@@ -18,10 +18,13 @@ Configuration
 
 ```yaml
 elasticsearch:
-  version: 1.3.2
-  cluster.name: elasticsearch
-  node.name: main
-  index.number_of_shards: 3
-  index.number_of_replicas: 1
+  version: 1.3
+  cluster:
+    name: elasticsearch
+  node:
+    name: main
+  index:
+    number_of_shards: 3
+    number_of_replicas: 1
   heap_size: 1g
 ```
