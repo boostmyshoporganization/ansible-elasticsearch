@@ -1,0 +1,15 @@
+---
+
+es:
+  plugins:
+    - royrusso/elasticsearch-HQ
+    - mobz/elasticsearch-head
+  version: 1.4
+  cluster:
+    name: elasticsearch
+  node:
+    name: main
+  index:
+    number_of_shards: 3
+    number_of_replicas: 1
+  heap_size: 1g

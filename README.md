@@ -17,7 +17,10 @@ Configuration
 -------------
 
 ```yaml
-elasticsearch:
+es:
+  plugins:
+    - royrusso/elasticsearch-HQ
+    - mobz/elasticsearch-head
   version: 1.3
   cluster:
     name: elasticsearch
