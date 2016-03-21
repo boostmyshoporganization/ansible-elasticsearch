@@ -24,6 +24,8 @@ es:
   version: 1.3
   cluster:
     name: elasticsearch
+  network:
+    host: 127.0.0.1
   node:
     name: main
   index:
